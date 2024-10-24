@@ -1,16 +1,16 @@
 import streamlit as st
-from PIL import Image  # Import PIL to handle images
-import streamlit as st
-from keras.models import load_model
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, roc_curve, auc
+from keras.models import load_model
 import gdown
-from tensorflow.keras.models import load_model
 import os
-import gdown
 
+# Function to preprocess the input image
+def preprocess_image(image):
+    # Resize the image to the model's input shape (modify according to your model's requirements)
+    image = image.resize((256, 256))  # Example size
+    image_array = np.array(image) / 255.0  # Normalize the image
+    return np.expand_dims(image_array, axis=0)  # Add batch dimension
 
 # Define the model file path
 model_path = 'attention_unet_classification_model.keras'
@@ -32,6 +32,7 @@ try:
     st.success("Model loaded successfully.")
 except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
+
 
 # (Add your existing Streamlit app code below)
 
