@@ -5,3 +5,4 @@ numpy
 pillow
 matplotlib
 scikit-learn  # Add this line
+keras
