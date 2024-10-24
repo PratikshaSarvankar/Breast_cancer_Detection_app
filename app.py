@@ -6,6 +6,23 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, roc_curve, auc
+import streamlit as st
+from PIL import Image
+import gdown
+from tensorflow.keras.models import load_model
+
+# Google Drive file ID
+file_id = '1CFi_ctM2KIVxkJzqHapJBoplJrDEVssr'  # Your file ID
+download_url = f'https://drive.google.com/uc?id={file_id}'
+output_path = 'model.h5'  # Save the model locally
+
+# Download the model from Google Drive
+gdown.download(download_url, output_path, quiet=False)
+
+# Load the model
+model = load_model(output_path)
+
+# (Add your existing Streamlit app code below)
 
 def first_page():
     # Custom CSS for styles
