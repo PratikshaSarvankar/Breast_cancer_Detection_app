@@ -1,4 +1,6 @@
-Flask
-Pillow
-requests
 streamlit
+gdown
+tensorflow==2.17.0  # Ensure this version matches your local setup
+numpy
+pillow
+matplotlib
