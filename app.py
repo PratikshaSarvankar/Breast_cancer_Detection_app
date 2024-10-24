@@ -1,28 +1,27 @@
-import streamlit as st
-from PIL import Image
-import numpy as np
-from keras.models import load_model
-import gdown
 import os
-
-# Function to preprocess the input image
-def preprocess_image(image):
-    # Resize the image to the model's input shape (modify according to your model's requirements)
-    image = image.resize((256, 256))  # Example size
-    image_array = np.array(image) / 255.0  # Normalize the image
-    return np.expand_dims(image_array, axis=0)  # Add batch dimension
+import streamlit as st
+import gdown
+from keras.models import load_model
 
 # Define the model file path
 model_path = 'attention_unet_classification_model.keras'
 
-# Check if the model file already exists
-if not os.path.exists(model_path):
-    # If not, download it
+# Function to download the model
+def download_model(file_id, model_path):
+    url = f'https://drive.google.com/uc?id={file_id}'
     try:
-        gdown.download('https://drive.google.com/uc?id=1CFi_ctM2KIVxkJzqHapJBoplJrDEVssr', model_path, quiet=False)
+        gdown.download(url, model_path, quiet=False)
         st.success("Model downloaded successfully.")
     except Exception as e:
         st.error(f"Error downloading the model: {str(e)}")
+
+# Check if the model file already exists
+if not os.path.exists(model_path):
+    # If not, download it
+    st.info("Model not found. Attempting to download...")
+    # Use the actual file ID from your Google Drive link
+    file_id = '1CFi_ctM2KIVxkJzqHapJBoplJrDEVssr'
+    download_model(file_id, model_path)
 else:
     st.success("Model already downloaded.")
 
@@ -32,6 +31,7 @@ try:
     st.success("Model loaded successfully.")
 except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
+
 
 
 # (Add your existing Streamlit app code below)
