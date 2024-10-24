@@ -6,15 +6,32 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, roc_curve, auc
-import streamlit as st
-from PIL import Image
 import gdown
 from tensorflow.keras.models import load_model
+import os
+import gdown
 
-gdown.download('https://drive.google.com/uc?id=YOUR_FILE_ID', 'model.h5', quiet=False)
+
+# Define the model file path
+model_path = 'attention_unet_classification_model.keras'
+
+# Check if the model file already exists
+if not os.path.exists(model_path):
+    # If not, download it
+    try:
+        gdown.download('https://drive.google.com/uc?id=1CFi_ctM2KIVxkJzqHapJBoplJrDEVssr', model_path, quiet=False)
+        st.success("Model downloaded successfully.")
+    except Exception as e:
+        st.error(f"Error downloading the model: {str(e)}")
+else:
+    st.success("Model already downloaded.")
 
 # Load the model
-model = load_model(output_path)
+try:
+    model = load_model(model_path)
+    st.success("Model loaded successfully.")
+except Exception as e:
+    st.error(f"Error loading the model: {str(e)}")
 
 # (Add your existing Streamlit app code below)
 
