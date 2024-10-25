@@ -298,7 +298,7 @@ def third_page():
            )
 
 def fourth_page():
-    model_path = r"C:\Users\Pratiksha\Desktop\attention_unet_classification_model.keras"
+    model_path = 'attention_unet_classification_model.keras'
     model = load_model(model_path, compile=False)
 
     # Define class labels
