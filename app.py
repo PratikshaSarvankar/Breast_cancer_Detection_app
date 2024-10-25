@@ -180,7 +180,7 @@ def second_page():
         col1, col2 = st.columns(2)
 
         # Load the image
-        image_path = r"2ndpage.jpg"  # Ensure the path is correct
+        image_path = "2ndpage.jpg"  # Ensure the path is correct
         img = Image.open(image_path)
 
         # Display the image in the first column, maintaining aspect ratio
