@@ -3,6 +3,15 @@ import gdown
 from tensorflow.keras.models import load_model
 import streamlit as st
 from PIL import Image
+import requests
+
+url = "https://drive.google.com/uc?export=download&id=1CFi_ctM2KIVxkJzqHapJBoplJrDEVssr"
+response = requests.get(url)
+
+# Save the model file
+with open("model.keras", "wb") as f:
+    f.write(response.content)
+
 
 
 # Define the model file path
