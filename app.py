@@ -2,6 +2,8 @@ import os
 import streamlit as st
 import gdown
 from keras.models import load_model
+from PIL import Image
+
 
 # Define the model file path
 model_path = 'attention_unet_classification_model.keras'
