@@ -95,7 +95,7 @@ def first_page():
         col1, col2 = st.columns(2)
 
         # Load the image
-        image_path = r"1stpage.jpeg"  # Ensure the path is correct
+        image_path = "1stpage.jpeg"  # Ensure the path is correct
         img = Image.open(image_path)
 
         # Display the image in the first column, resized
