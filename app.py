@@ -1,9 +1,7 @@
 import os
-import streamlit as st
 import gdown
-from keras.models import load_model
-from PIL import Image
-
+from tensorflow.keras.models import load_model
+import streamlit as st
 
 # Define the model file path
 model_path = 'attention_unet_classification_model.keras'
@@ -33,6 +31,7 @@ try:
     st.success("Model loaded successfully.")
 except Exception as e:
     st.error(f"Error loading the model: {str(e)}")
+
 
 
 
